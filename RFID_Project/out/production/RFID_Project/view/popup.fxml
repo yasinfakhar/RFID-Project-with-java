@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane fx:id="popupPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="71.0" prefWidth="303.0" xmlns="http://javafx.com/javafx/10.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.popupcontroller">
+   <children>
+      <Label fx:id="lb_popup" layoutX="54.0" layoutY="23.0" text="sdfsdf" textFill="#5c0707">
+         <font>
+            <Font size="17.0" />
+         </font></Label>
+      <ImageView fitHeight="31.0" fitWidth="32.0" layoutX="13.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@/pictures/warning.png" />
+         </image>
+      </ImageView>
+   </children>
+</Pane>
