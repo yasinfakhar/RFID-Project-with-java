@@ -1,0 +1,60 @@
+-- Create table
+create table USERS
+(
+  user_id     VARCHAR2(20) not null,
+  first_name  VARCHAR2(50),
+  last_name   VARCHAR2(50),
+  card_id     VARCHAR2(8) not null,
+  profile_pic VARCHAR2(100)
+)
+tablespace SYSTEM
+  pctfree 10
+  pctused 40
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    minextents 1
+    maxextents unlimited
+  );
+-- Create/Recreate primary, unique and foreign key constraints 
+alter table USERS
+  add constraint PK_USERS primary key (USER_ID, CARD_ID)
+  using index 
+  tablespace SYSTEM
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    minextents 1
+    maxextents unlimited
+  );
+
+
+--create procedure
+
+create or replace procedure insert_update(in_user_ID     in varchar,
+                                          in_first_name  in varchar,
+                                          in_last_name   in varchar,
+                                          in_card_ID     in varchar,
+                                          in_profile_pic in varchar) is
+BEGIN
+  UPDATE users
+     SET first_name  = in_first_name,
+         last_name   = in_last_name,
+         card_ID     = in_card_ID,
+         user_ID     = in_user_ID,
+         profile_pic = in_profile_pic
+   WHERE user_id = in_user_ID
+     and card_id = in_card_ID;
+
+  IF (sql%rowcount = 0) THEN
+    INSERT INTO users
+    VALUES
+      (in_user_ID, in_first_name, in_last_name, in_card_ID, in_profile_pic);
+  END IF;
+
+END;
